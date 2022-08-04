@@ -1,18 +1,28 @@
 import './App.css';
 import Input from './components/Input'
 import { useState, useEffect } from 'react'
+import Todos from './components/Todos'
 
 function App() {
-  const [todo, setTodo] = useState('')
+  const [todos, setTodos] = useState([])
 
-  function onIpt(text) {
-    setTodo(text)
-  }
+  // todos
+  useEffect(() => {
+
+
+    return () => {
+
+    };
+  }, [todos]);
 
   return (
     <div className="App">
       <h1>Todos</h1>
-      <Input onIpt={ onIpt }/>
+      <Input onIpt={ text => {
+        setTodos(todo => {
+          return [...todo, text]
+        })
+      } }/>
     </div>
   );
 }
