@@ -7,8 +7,19 @@ function App() {
   const [todos, setTodos] = useState([])
 
   // todos
-  useEffect(() => {
+  function renderList(todos) {
+    return (
+      todos.map(
+        (todo, index) => {
+          return <Todos key={index} todo={todo} />
+        }
+      )
+    )
+  }
 
+  let list = renderList(todos)
+  useEffect(() => {
+    list = renderList(todos)
 
     return () => {
 
@@ -22,7 +33,9 @@ function App() {
         setTodos(todo => {
           return [...todo, text]
         })
-      } }/>
+      } }
+      />
+      {list}
     </div>
   );
 }

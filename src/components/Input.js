@@ -5,7 +5,7 @@ const Input = ({ onIpt }) => {
   const [todo, setTodo] = useState('')
 
   return (
-    <div>
+    <div className="input">
       <input
         autoFocus={ true }
         placeholder="What needs to be done?"
@@ -13,6 +13,7 @@ const Input = ({ onIpt }) => {
         onChange={ e => setTodo(e.target.value) }
         onKeyDown={ e => {
           if (e.code === 'Enter') onIpt(todo)
+          setTodo('')
         } }
         type="text"
       />
