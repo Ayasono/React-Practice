@@ -11,7 +11,9 @@ function App() {
     return (
       todos.map(
         (todo, index) => {
-          return <Todos key={index} todo={todo} />
+          return <Todos key={ index }
+            todo={ todo.text }
+          />
         }
       )
     )
@@ -27,15 +29,15 @@ function App() {
   }, [todos]);
 
   return (
-    <div className="App">
+    <div className='App'>
       <h1>Todos</h1>
       <Input onIpt={ text => {
         setTodos(todo => {
-          return [...todo, text]
+          return [...todo, { text }]
         })
       } }
       />
-      {list}
+      { list }
     </div>
   );
 }
