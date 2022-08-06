@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Todos.css'
 
-const Todos = ({ todo }) => {
-  const [isChecked, setIsChecked] = useState(false)
+const Todos = ({ todo, isChecked, setTodo }) => {
 
   return (<div className='todo'
     style={ { display: 'flex', justifyContent: 'center', alignItems: 'center' } }>
     <input
       checked={ isChecked }
-      onChange={ () => setIsChecked(!isChecked) }
+      onChange={ () => {
+        setTodo(
+          v => {
+            const i = v.find(el => {
+              return el.text === todo
+            })
+            i.isChecked = !i.isChecked
+            return [...v]
+          }
+        )
+      }}
       type='checkbox'
       style={ { height: '25px', width: '25px', border: '1px black solid' } }
     />

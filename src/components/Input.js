@@ -12,6 +12,7 @@ const Input = ({ onIpt }) => {
         value={ todo }
         onChange={e => setTodo(e.target.value)}
         onKeyDown={ e => {
+          if (todo === '') return
           if (e.code === 'Enter') {
             onIpt(todo)
             setTodo('')

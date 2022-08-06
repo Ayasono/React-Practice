@@ -11,8 +11,11 @@ function App() {
     return (
       todos.map(
         (todo, index) => {
-          return <Todos key={ index }
+          return <Todos
+            key={ index }
             todo={ todo.text }
+            isChecked={ todo.isChecked }
+            setTodo={ setTodos }
           />
         }
       )
@@ -22,7 +25,7 @@ function App() {
   let list = renderList(todos)
   useEffect(() => {
     list = renderList(todos)
-
+    console.log(todos)
     return () => {
 
     };
@@ -33,7 +36,7 @@ function App() {
       <h1>Todos</h1>
       <Input onIpt={ text => {
         setTodos(todo => {
-          return [...todo, { text }]
+          return [...todo, { text, isChecked: false }]
         })
       } }
       />
