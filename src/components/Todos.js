@@ -8,6 +8,7 @@ const Todos = ({ todo, isChecked, setTodo }) => {
     <input
       checked={ isChecked }
       onChange={ () => {
+        // bugs
         setTodo(
           v => {
             const i = v.find(el => {
